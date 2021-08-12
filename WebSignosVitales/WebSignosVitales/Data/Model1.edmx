@@ -1,0 +1,896 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="uth_inte09Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="detalles">
+          <Key>
+            <PropertyRef Name="Idregistro" />
+          </Key>
+          <Property Name="IdFC" Type="int" />
+          <Property Name="Idregistro" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Distancia_recor" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Nopasos" Type="int" Nullable="false" />
+          <Property Name="Calorias_quem" Type="int" Nullable="false" />
+          <Property Name="Fecha_regde" Type="date" Nullable="false" />
+          <Property Name="Hora_regde" Type="time" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="expediente">
+          <Key>
+            <PropertyRef Name="Expediente" />
+          </Key>
+          <Property Name="Idpaciente" Type="int" />
+          <Property Name="Expediente" Type="char" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="fre_card">
+          <Key>
+            <PropertyRef Name="IdFC" />
+          </Key>
+          <Property Name="IdSV" Type="int" />
+          <Property Name="IdFC" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nivel_frecard" Type="int" Nullable="false" />
+          <Property Name="Estado" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Fecha_regfc" Type="date" Nullable="false" />
+          <Property Name="Hora_regfc" Type="time" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="pacientes">
+          <Key>
+            <PropertyRef Name="Idpaciente" />
+          </Key>
+          <Property Name="Idpaciente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombrepas" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Sexo" Type="varchar" MaxLength="2" Nullable="false" />
+          <Property Name="Edad" Type="int" Nullable="false" />
+          <Property Name="Estadocivil" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Fecha_nac" Type="date" />
+          <Property Name="Domicilio" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="telefono" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="correo" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="peso">
+          <Key>
+            <PropertyRef Name="Idp" />
+          </Key>
+          <Property Name="IdSV" Type="int" />
+          <Property Name="Idp" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Peso" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="Estado" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Fecha_regp" Type="date" Nullable="false" />
+          <Property Name="Hora_regp" Type="time" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="pres_arte">
+          <Key>
+            <PropertyRef Name="IdPA" />
+          </Key>
+          <Property Name="IdSV" Type="int" />
+          <Property Name="IdPA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nivel_presi" Type="int" Nullable="false" />
+          <Property Name="Estado" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Fecha_regpa" Type="date" Nullable="false" />
+          <Property Name="Hora_regpa" Type="time" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sat_oxi">
+          <Key>
+            <PropertyRef Name="IdSO" />
+          </Key>
+          <Property Name="IdSV" Type="int" />
+          <Property Name="IdSO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nivel_oxi" Type="int" Nullable="false" />
+          <Property Name="Estado" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Fecha_regso" Type="date" Nullable="false" />
+          <Property Name="Hora_regso" Type="time" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sig_vit">
+          <Key>
+            <PropertyRef Name="IdSV" />
+          </Key>
+          <Property Name="Idpaciente" Type="int" />
+          <Property Name="Expediente" Type="char" MaxLength="10" />
+          <Property Name="IdSV" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fecha_reg" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="talla">
+          <Key>
+            <PropertyRef Name="Idt" />
+          </Key>
+          <Property Name="IdSV" Type="int" />
+          <Property Name="Idt" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="talla" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="Fecha_regt" Type="date" Nullable="false" />
+          <Property Name="Hora_regt" Type="time" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tem_cor">
+          <Key>
+            <PropertyRef Name="IdTC" />
+          </Key>
+          <Property Name="IdSV" Type="int" />
+          <Property Name="IdTC" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nivel_temp" Type="int" Nullable="false" />
+          <Property Name="Estado" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Fecha_regtc" Type="date" Nullable="false" />
+          <Property Name="Hora_regtc" Type="time" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="Idusuario" />
+          </Key>
+          <Property Name="Idusuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fullname_doc" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="usuario" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="cotrasena" Type="varchar" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <Association Name="fk_expediente">
+          <End Role="expediente" Type="Self.expediente" Multiplicity="0..1" />
+          <End Role="sig_vit" Type="Self.sig_vit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="expediente">
+              <PropertyRef Name="Expediente" />
+            </Principal>
+            <Dependent Role="sig_vit">
+              <PropertyRef Name="Expediente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_fre_card">
+          <End Role="fre_card" Type="Self.fre_card" Multiplicity="0..1" />
+          <End Role="detalles" Type="Self.detalles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fre_card">
+              <PropertyRef Name="IdFC" />
+            </Principal>
+            <Dependent Role="detalles">
+              <PropertyRef Name="IdFC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_pacient">
+          <End Role="pacientes" Type="Self.pacientes" Multiplicity="0..1" />
+          <End Role="sig_vit" Type="Self.sig_vit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pacientes">
+              <PropertyRef Name="Idpaciente" />
+            </Principal>
+            <Dependent Role="sig_vit">
+              <PropertyRef Name="Idpaciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_pacientes">
+          <End Role="pacientes" Type="Self.pacientes" Multiplicity="0..1" />
+          <End Role="expediente" Type="Self.expediente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pacientes">
+              <PropertyRef Name="Idpaciente" />
+            </Principal>
+            <Dependent Role="expediente">
+              <PropertyRef Name="Idpaciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_sig_vi">
+          <End Role="sig_vit" Type="Self.sig_vit" Multiplicity="0..1" />
+          <End Role="talla" Type="Self.talla" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sig_vit">
+              <PropertyRef Name="IdSV" />
+            </Principal>
+            <Dependent Role="talla">
+              <PropertyRef Name="IdSV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_sig_vit">
+          <End Role="sig_vit" Type="Self.sig_vit" Multiplicity="0..1" />
+          <End Role="peso" Type="Self.peso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sig_vit">
+              <PropertyRef Name="IdSV" />
+            </Principal>
+            <Dependent Role="peso">
+              <PropertyRef Name="IdSV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_sig_vital">
+          <End Role="sig_vit" Type="Self.sig_vit" Multiplicity="0..1" />
+          <End Role="fre_card" Type="Self.fre_card" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sig_vit">
+              <PropertyRef Name="IdSV" />
+            </Principal>
+            <Dependent Role="fre_card">
+              <PropertyRef Name="IdSV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_sig_vt">
+          <End Role="sig_vit" Type="Self.sig_vit" Multiplicity="0..1" />
+          <End Role="sat_oxi" Type="Self.sat_oxi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sig_vit">
+              <PropertyRef Name="IdSV" />
+            </Principal>
+            <Dependent Role="sat_oxi">
+              <PropertyRef Name="IdSV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_sign_vit">
+          <End Role="sig_vit" Type="Self.sig_vit" Multiplicity="0..1" />
+          <End Role="pres_arte" Type="Self.pres_arte" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sig_vit">
+              <PropertyRef Name="IdSV" />
+            </Principal>
+            <Dependent Role="pres_arte">
+              <PropertyRef Name="IdSV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_signo_vit">
+          <End Role="sig_vit" Type="Self.sig_vit" Multiplicity="0..1" />
+          <End Role="tem_cor" Type="Self.tem_cor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sig_vit">
+              <PropertyRef Name="IdSV" />
+            </Principal>
+            <Dependent Role="tem_cor">
+              <PropertyRef Name="IdSV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="uth_inte09ModelStoreContainer">
+          <EntitySet Name="detalles" EntityType="Self.detalles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="expediente" EntityType="Self.expediente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="fre_card" EntityType="Self.fre_card" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="pacientes" EntityType="Self.pacientes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="peso" EntityType="Self.peso" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="pres_arte" EntityType="Self.pres_arte" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sat_oxi" EntityType="Self.sat_oxi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sig_vit" EntityType="Self.sig_vit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="talla" EntityType="Self.talla" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tem_cor" EntityType="Self.tem_cor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="usuario" EntityType="Self.usuario" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="fk_expediente" Association="Self.fk_expediente">
+            <End Role="expediente" EntitySet="expediente" />
+            <End Role="sig_vit" EntitySet="sig_vit" />
+          </AssociationSet>
+          <AssociationSet Name="fk_fre_card" Association="Self.fk_fre_card">
+            <End Role="fre_card" EntitySet="fre_card" />
+            <End Role="detalles" EntitySet="detalles" />
+          </AssociationSet>
+          <AssociationSet Name="fk_pacient" Association="Self.fk_pacient">
+            <End Role="pacientes" EntitySet="pacientes" />
+            <End Role="sig_vit" EntitySet="sig_vit" />
+          </AssociationSet>
+          <AssociationSet Name="fk_pacientes" Association="Self.fk_pacientes">
+            <End Role="pacientes" EntitySet="pacientes" />
+            <End Role="expediente" EntitySet="expediente" />
+          </AssociationSet>
+          <AssociationSet Name="fk_sig_vi" Association="Self.fk_sig_vi">
+            <End Role="sig_vit" EntitySet="sig_vit" />
+            <End Role="talla" EntitySet="talla" />
+          </AssociationSet>
+          <AssociationSet Name="fk_sig_vit" Association="Self.fk_sig_vit">
+            <End Role="sig_vit" EntitySet="sig_vit" />
+            <End Role="peso" EntitySet="peso" />
+          </AssociationSet>
+          <AssociationSet Name="fk_sig_vital" Association="Self.fk_sig_vital">
+            <End Role="sig_vit" EntitySet="sig_vit" />
+            <End Role="fre_card" EntitySet="fre_card" />
+          </AssociationSet>
+          <AssociationSet Name="fk_sig_vt" Association="Self.fk_sig_vt">
+            <End Role="sig_vit" EntitySet="sig_vit" />
+            <End Role="sat_oxi" EntitySet="sat_oxi" />
+          </AssociationSet>
+          <AssociationSet Name="fk_sign_vit" Association="Self.fk_sign_vit">
+            <End Role="sig_vit" EntitySet="sig_vit" />
+            <End Role="pres_arte" EntitySet="pres_arte" />
+          </AssociationSet>
+          <AssociationSet Name="fk_signo_vit" Association="Self.fk_signo_vit">
+            <End Role="sig_vit" EntitySet="sig_vit" />
+            <End Role="tem_cor" EntitySet="tem_cor" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="uth_inte09Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="detalles">
+          <Key>
+            <PropertyRef Name="Idregistro" />
+          </Key>
+          <Property Name="IdFC" Type="Int32" />
+          <Property Name="Idregistro" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Distancia_recor" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nopasos" Type="Int32" Nullable="false" />
+          <Property Name="Calorias_quem" Type="Int32" Nullable="false" />
+          <Property Name="Fecha_regde" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Hora_regde" Type="Time" Nullable="false" Precision="7" />
+          <NavigationProperty Name="fre_card" Relationship="Self.fk_fre_card" FromRole="detalles" ToRole="fre_card" />
+        </EntityType>
+        <EntityType Name="expediente">
+          <Key>
+            <PropertyRef Name="Expediente1" />
+          </Key>
+          <Property Name="Idpaciente" Type="Int32" />
+          <Property Name="Expediente1" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="sig_vit" Relationship="Self.fk_expediente" FromRole="expediente" ToRole="sig_vit" />
+          <NavigationProperty Name="pacientes" Relationship="Self.fk_pacientes" FromRole="expediente" ToRole="pacientes" />
+        </EntityType>
+        <EntityType Name="fre_card">
+          <Key>
+            <PropertyRef Name="IdFC" />
+          </Key>
+          <Property Name="IdSV" Type="Int32" />
+          <Property Name="IdFC" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nivel_frecard" Type="Int32" Nullable="false" />
+          <Property Name="Estado" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Fecha_regfc" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Hora_regfc" Type="Time" Nullable="false" Precision="7" />
+          <NavigationProperty Name="detalles" Relationship="Self.fk_fre_card" FromRole="fre_card" ToRole="detalles" />
+          <NavigationProperty Name="sig_vit" Relationship="Self.fk_sig_vital" FromRole="fre_card" ToRole="sig_vit" />
+        </EntityType>
+        <EntityType Name="pacientes">
+          <Key>
+            <PropertyRef Name="Idpaciente" />
+          </Key>
+          <Property Name="Idpaciente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombrepas" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Sexo" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Edad" Type="Int32" Nullable="false" />
+          <Property Name="Estadocivil" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Fecha_nac" Type="DateTime" Precision="0" />
+          <Property Name="Domicilio" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="telefono" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="correo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="expediente" Relationship="Self.fk_pacientes" FromRole="pacientes" ToRole="expediente" />
+          <NavigationProperty Name="sig_vit" Relationship="Self.fk_pacient" FromRole="pacientes" ToRole="sig_vit" />
+        </EntityType>
+        <EntityType Name="peso">
+          <Key>
+            <PropertyRef Name="Idp" />
+          </Key>
+          <Property Name="IdSV" Type="Int32" />
+          <Property Name="Idp" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Peso1" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="Estado" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Fecha_regp" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Hora_regp" Type="Time" Nullable="false" Precision="7" />
+          <NavigationProperty Name="sig_vit" Relationship="Self.fk_sig_vit" FromRole="peso" ToRole="sig_vit" />
+        </EntityType>
+        <EntityType Name="pres_arte">
+          <Key>
+            <PropertyRef Name="IdPA" />
+          </Key>
+          <Property Name="IdSV" Type="Int32" />
+          <Property Name="IdPA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nivel_presi" Type="Int32" Nullable="false" />
+          <Property Name="Estado" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Fecha_regpa" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Hora_regpa" Type="Time" Nullable="false" Precision="7" />
+          <NavigationProperty Name="sig_vit" Relationship="Self.fk_sign_vit" FromRole="pres_arte" ToRole="sig_vit" />
+        </EntityType>
+        <EntityType Name="sat_oxi">
+          <Key>
+            <PropertyRef Name="IdSO" />
+          </Key>
+          <Property Name="IdSV" Type="Int32" />
+          <Property Name="IdSO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nivel_oxi" Type="Int32" Nullable="false" />
+          <Property Name="Estado" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Fecha_regso" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Hora_regso" Type="Time" Nullable="false" Precision="7" />
+          <NavigationProperty Name="sig_vit" Relationship="Self.fk_sig_vt" FromRole="sat_oxi" ToRole="sig_vit" />
+        </EntityType>
+        <EntityType Name="sig_vit">
+          <Key>
+            <PropertyRef Name="IdSV" />
+          </Key>
+          <Property Name="Idpaciente" Type="Int32" />
+          <Property Name="Expediente" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="IdSV" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fecha_reg" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="expediente1" Relationship="Self.fk_expediente" FromRole="sig_vit" ToRole="expediente" />
+          <NavigationProperty Name="fre_card" Relationship="Self.fk_sig_vital" FromRole="sig_vit" ToRole="fre_card" />
+          <NavigationProperty Name="pacientes" Relationship="Self.fk_pacient" FromRole="sig_vit" ToRole="pacientes" />
+          <NavigationProperty Name="peso" Relationship="Self.fk_sig_vit" FromRole="sig_vit" ToRole="peso" />
+          <NavigationProperty Name="pres_arte" Relationship="Self.fk_sign_vit" FromRole="sig_vit" ToRole="pres_arte" />
+          <NavigationProperty Name="sat_oxi" Relationship="Self.fk_sig_vt" FromRole="sig_vit" ToRole="sat_oxi" />
+          <NavigationProperty Name="talla" Relationship="Self.fk_sig_vi" FromRole="sig_vit" ToRole="talla" />
+          <NavigationProperty Name="tem_cor" Relationship="Self.fk_signo_vit" FromRole="sig_vit" ToRole="tem_cor" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="talla">
+          <Key>
+            <PropertyRef Name="Idt" />
+          </Key>
+          <Property Name="IdSV" Type="Int32" />
+          <Property Name="Idt" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="talla1" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="Fecha_regt" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Hora_regt" Type="Time" Nullable="false" Precision="7" />
+          <NavigationProperty Name="sig_vit" Relationship="Self.fk_sig_vi" FromRole="talla" ToRole="sig_vit" />
+        </EntityType>
+        <EntityType Name="tem_cor">
+          <Key>
+            <PropertyRef Name="IdTC" />
+          </Key>
+          <Property Name="IdSV" Type="Int32" />
+          <Property Name="IdTC" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nivel_temp" Type="Int32" Nullable="false" />
+          <Property Name="Estado" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Fecha_regtc" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Hora_regtc" Type="Time" Nullable="false" Precision="7" />
+          <NavigationProperty Name="sig_vit" Relationship="Self.fk_signo_vit" FromRole="tem_cor" ToRole="sig_vit" />
+        </EntityType>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="Idusuario" />
+          </Key>
+          <Property Name="Idusuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fullname_doc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="usuario1" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cotrasena" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <Association Name="fk_fre_card">
+          <End Role="fre_card" Type="Self.fre_card" Multiplicity="0..1" />
+          <End Role="detalles" Type="Self.detalles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fre_card">
+              <PropertyRef Name="IdFC" />
+            </Principal>
+            <Dependent Role="detalles">
+              <PropertyRef Name="IdFC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_expediente">
+          <End Role="expediente" Type="Self.expediente" Multiplicity="0..1" />
+          <End Role="sig_vit" Type="Self.sig_vit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="expediente">
+              <PropertyRef Name="Expediente1" />
+            </Principal>
+            <Dependent Role="sig_vit">
+              <PropertyRef Name="Expediente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_pacientes">
+          <End Role="pacientes" Type="Self.pacientes" Multiplicity="0..1" />
+          <End Role="expediente" Type="Self.expediente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pacientes">
+              <PropertyRef Name="Idpaciente" />
+            </Principal>
+            <Dependent Role="expediente">
+              <PropertyRef Name="Idpaciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_sig_vital">
+          <End Role="sig_vit" Type="Self.sig_vit" Multiplicity="0..1" />
+          <End Role="fre_card" Type="Self.fre_card" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sig_vit">
+              <PropertyRef Name="IdSV" />
+            </Principal>
+            <Dependent Role="fre_card">
+              <PropertyRef Name="IdSV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_pacient">
+          <End Role="pacientes" Type="Self.pacientes" Multiplicity="0..1" />
+          <End Role="sig_vit" Type="Self.sig_vit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pacientes">
+              <PropertyRef Name="Idpaciente" />
+            </Principal>
+            <Dependent Role="sig_vit">
+              <PropertyRef Name="Idpaciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_sig_vit">
+          <End Role="sig_vit" Type="Self.sig_vit" Multiplicity="0..1" />
+          <End Role="peso" Type="Self.peso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sig_vit">
+              <PropertyRef Name="IdSV" />
+            </Principal>
+            <Dependent Role="peso">
+              <PropertyRef Name="IdSV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_sign_vit">
+          <End Role="sig_vit" Type="Self.sig_vit" Multiplicity="0..1" />
+          <End Role="pres_arte" Type="Self.pres_arte" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sig_vit">
+              <PropertyRef Name="IdSV" />
+            </Principal>
+            <Dependent Role="pres_arte">
+              <PropertyRef Name="IdSV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_sig_vt">
+          <End Role="sig_vit" Type="Self.sig_vit" Multiplicity="0..1" />
+          <End Role="sat_oxi" Type="Self.sat_oxi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sig_vit">
+              <PropertyRef Name="IdSV" />
+            </Principal>
+            <Dependent Role="sat_oxi">
+              <PropertyRef Name="IdSV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_sig_vi">
+          <End Role="sig_vit" Type="Self.sig_vit" Multiplicity="0..1" />
+          <End Role="talla" Type="Self.talla" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sig_vit">
+              <PropertyRef Name="IdSV" />
+            </Principal>
+            <Dependent Role="talla">
+              <PropertyRef Name="IdSV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_signo_vit">
+          <End Role="sig_vit" Type="Self.sig_vit" Multiplicity="0..1" />
+          <End Role="tem_cor" Type="Self.tem_cor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sig_vit">
+              <PropertyRef Name="IdSV" />
+            </Principal>
+            <Dependent Role="tem_cor">
+              <PropertyRef Name="IdSV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="uth_inte09Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="detalles" EntityType="Self.detalles" />
+          <EntitySet Name="expediente" EntityType="Self.expediente" />
+          <EntitySet Name="fre_card" EntityType="Self.fre_card" />
+          <EntitySet Name="pacientes" EntityType="Self.pacientes" />
+          <EntitySet Name="peso" EntityType="Self.peso" />
+          <EntitySet Name="pres_arte" EntityType="Self.pres_arte" />
+          <EntitySet Name="sat_oxi" EntityType="Self.sat_oxi" />
+          <EntitySet Name="sig_vit" EntityType="Self.sig_vit" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="talla" EntityType="Self.talla" />
+          <EntitySet Name="tem_cor" EntityType="Self.tem_cor" />
+          <EntitySet Name="usuario" EntityType="Self.usuario" />
+          <AssociationSet Name="fk_fre_card" Association="Self.fk_fre_card">
+            <End Role="fre_card" EntitySet="fre_card" />
+            <End Role="detalles" EntitySet="detalles" />
+          </AssociationSet>
+          <AssociationSet Name="fk_expediente" Association="Self.fk_expediente">
+            <End Role="expediente" EntitySet="expediente" />
+            <End Role="sig_vit" EntitySet="sig_vit" />
+          </AssociationSet>
+          <AssociationSet Name="fk_pacientes" Association="Self.fk_pacientes">
+            <End Role="pacientes" EntitySet="pacientes" />
+            <End Role="expediente" EntitySet="expediente" />
+          </AssociationSet>
+          <AssociationSet Name="fk_sig_vital" Association="Self.fk_sig_vital">
+            <End Role="sig_vit" EntitySet="sig_vit" />
+            <End Role="fre_card" EntitySet="fre_card" />
+          </AssociationSet>
+          <AssociationSet Name="fk_pacient" Association="Self.fk_pacient">
+            <End Role="pacientes" EntitySet="pacientes" />
+            <End Role="sig_vit" EntitySet="sig_vit" />
+          </AssociationSet>
+          <AssociationSet Name="fk_sig_vit" Association="Self.fk_sig_vit">
+            <End Role="sig_vit" EntitySet="sig_vit" />
+            <End Role="peso" EntitySet="peso" />
+          </AssociationSet>
+          <AssociationSet Name="fk_sign_vit" Association="Self.fk_sign_vit">
+            <End Role="sig_vit" EntitySet="sig_vit" />
+            <End Role="pres_arte" EntitySet="pres_arte" />
+          </AssociationSet>
+          <AssociationSet Name="fk_sig_vt" Association="Self.fk_sig_vt">
+            <End Role="sig_vit" EntitySet="sig_vit" />
+            <End Role="sat_oxi" EntitySet="sat_oxi" />
+          </AssociationSet>
+          <AssociationSet Name="fk_sig_vi" Association="Self.fk_sig_vi">
+            <End Role="sig_vit" EntitySet="sig_vit" />
+            <End Role="talla" EntitySet="talla" />
+          </AssociationSet>
+          <AssociationSet Name="fk_signo_vit" Association="Self.fk_signo_vit">
+            <End Role="sig_vit" EntitySet="sig_vit" />
+            <End Role="tem_cor" EntitySet="tem_cor" />
+          </AssociationSet>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(uth_inte09Model.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(uth_inte09Model.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+        </EntityContainer>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="uth_inte09ModelStoreContainer" CdmEntityContainer="uth_inte09Entities">
+          <EntitySetMapping Name="detalles">
+            <EntityTypeMapping TypeName="uth_inte09Model.detalles">
+              <MappingFragment StoreEntitySet="detalles">
+                <ScalarProperty Name="IdFC" ColumnName="IdFC" />
+                <ScalarProperty Name="Idregistro" ColumnName="Idregistro" />
+                <ScalarProperty Name="Distancia_recor" ColumnName="Distancia_recor" />
+                <ScalarProperty Name="Nopasos" ColumnName="Nopasos" />
+                <ScalarProperty Name="Calorias_quem" ColumnName="Calorias_quem" />
+                <ScalarProperty Name="Fecha_regde" ColumnName="Fecha_regde" />
+                <ScalarProperty Name="Hora_regde" ColumnName="Hora_regde" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="expediente">
+            <EntityTypeMapping TypeName="uth_inte09Model.expediente">
+              <MappingFragment StoreEntitySet="expediente">
+                <ScalarProperty Name="Idpaciente" ColumnName="Idpaciente" />
+                <ScalarProperty Name="Expediente1" ColumnName="Expediente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="fre_card">
+            <EntityTypeMapping TypeName="uth_inte09Model.fre_card">
+              <MappingFragment StoreEntitySet="fre_card">
+                <ScalarProperty Name="IdSV" ColumnName="IdSV" />
+                <ScalarProperty Name="IdFC" ColumnName="IdFC" />
+                <ScalarProperty Name="Nivel_frecard" ColumnName="Nivel_frecard" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Fecha_regfc" ColumnName="Fecha_regfc" />
+                <ScalarProperty Name="Hora_regfc" ColumnName="Hora_regfc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pacientes">
+            <EntityTypeMapping TypeName="uth_inte09Model.pacientes">
+              <MappingFragment StoreEntitySet="pacientes">
+                <ScalarProperty Name="Idpaciente" ColumnName="Idpaciente" />
+                <ScalarProperty Name="Nombrepas" ColumnName="Nombrepas" />
+                <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+                <ScalarProperty Name="Edad" ColumnName="Edad" />
+                <ScalarProperty Name="Estadocivil" ColumnName="Estadocivil" />
+                <ScalarProperty Name="Fecha_nac" ColumnName="Fecha_nac" />
+                <ScalarProperty Name="Domicilio" ColumnName="Domicilio" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="peso">
+            <EntityTypeMapping TypeName="uth_inte09Model.peso">
+              <MappingFragment StoreEntitySet="peso">
+                <ScalarProperty Name="IdSV" ColumnName="IdSV" />
+                <ScalarProperty Name="Idp" ColumnName="Idp" />
+                <ScalarProperty Name="Peso1" ColumnName="Peso" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Fecha_regp" ColumnName="Fecha_regp" />
+                <ScalarProperty Name="Hora_regp" ColumnName="Hora_regp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pres_arte">
+            <EntityTypeMapping TypeName="uth_inte09Model.pres_arte">
+              <MappingFragment StoreEntitySet="pres_arte">
+                <ScalarProperty Name="IdSV" ColumnName="IdSV" />
+                <ScalarProperty Name="IdPA" ColumnName="IdPA" />
+                <ScalarProperty Name="Nivel_presi" ColumnName="Nivel_presi" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Fecha_regpa" ColumnName="Fecha_regpa" />
+                <ScalarProperty Name="Hora_regpa" ColumnName="Hora_regpa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sat_oxi">
+            <EntityTypeMapping TypeName="uth_inte09Model.sat_oxi">
+              <MappingFragment StoreEntitySet="sat_oxi">
+                <ScalarProperty Name="IdSV" ColumnName="IdSV" />
+                <ScalarProperty Name="IdSO" ColumnName="IdSO" />
+                <ScalarProperty Name="Nivel_oxi" ColumnName="Nivel_oxi" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Fecha_regso" ColumnName="Fecha_regso" />
+                <ScalarProperty Name="Hora_regso" ColumnName="Hora_regso" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sig_vit">
+            <EntityTypeMapping TypeName="uth_inte09Model.sig_vit">
+              <MappingFragment StoreEntitySet="sig_vit">
+                <ScalarProperty Name="Idpaciente" ColumnName="Idpaciente" />
+                <ScalarProperty Name="Expediente" ColumnName="Expediente" />
+                <ScalarProperty Name="IdSV" ColumnName="IdSV" />
+                <ScalarProperty Name="Fecha_reg" ColumnName="Fecha_reg" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="uth_inte09Model.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="talla">
+            <EntityTypeMapping TypeName="uth_inte09Model.talla">
+              <MappingFragment StoreEntitySet="talla">
+                <ScalarProperty Name="IdSV" ColumnName="IdSV" />
+                <ScalarProperty Name="Idt" ColumnName="Idt" />
+                <ScalarProperty Name="talla1" ColumnName="talla" />
+                <ScalarProperty Name="Fecha_regt" ColumnName="Fecha_regt" />
+                <ScalarProperty Name="Hora_regt" ColumnName="Hora_regt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tem_cor">
+            <EntityTypeMapping TypeName="uth_inte09Model.tem_cor">
+              <MappingFragment StoreEntitySet="tem_cor">
+                <ScalarProperty Name="IdSV" ColumnName="IdSV" />
+                <ScalarProperty Name="IdTC" ColumnName="IdTC" />
+                <ScalarProperty Name="Nivel_temp" ColumnName="Nivel_temp" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Fecha_regtc" ColumnName="Fecha_regtc" />
+                <ScalarProperty Name="Hora_regtc" ColumnName="Hora_regtc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="usuario">
+            <EntityTypeMapping TypeName="uth_inte09Model.usuario">
+              <MappingFragment StoreEntitySet="usuario">
+                <ScalarProperty Name="Idusuario" ColumnName="Idusuario" />
+                <ScalarProperty Name="fullname_doc" ColumnName="fullname_doc" />
+                <ScalarProperty Name="usuario1" ColumnName="usuario" />
+                <ScalarProperty Name="cotrasena" ColumnName="cotrasena" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="uth_inte09Model.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="uth_inte09Model.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="uth_inte09Model.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="uth_inte09Model.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="uth_inte09Model.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="uth_inte09Model.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="uth_inte09Model.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="uth_inte09Model.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="uth_inte09Model.Store.sp_upgraddiagrams" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
