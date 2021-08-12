@@ -20,6 +20,41 @@ namespace WebSignosVitales.Controllers
             return View();
         }
 
+        public ActionResult signosVitales() 
+        {
+            return View();
+        }
+
+        public ActionResult Peso() 
+        {
+            return View();
+        }
+
+        public ActionResult Talla() 
+        {
+            return View();
+        }
+
+        public ActionResult saturacionOxigeno() 
+        {
+            return View();
+        }
+
+        public ActionResult Detalles() 
+        {
+            return View();
+        }
+
+        public ActionResult presionArterial() 
+        {
+            return View();
+        }
+
+        public ActionResult temperaturaCorporal() 
+        {
+            return View();
+        }
+
         // GET: Expedientes/Details/5
         public ActionResult Details(int id)
         {
